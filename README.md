@@ -52,28 +52,8 @@ from the *same* Secure Workload policy model, and layer on **defense-in-depth**
 
 ## Host-based vs network-based — one policy, two enforcement styles
 
-```mermaid
-flowchart TB
-  subgraph CSW["Cisco Secure Workload — single policy brain"]
-    ADM["Flow ingest · ADM policy discovery · analysis · compliance"]
-  end
-
-  subgraph HOST["Agent (host-based)"]
-    A1["Workload + agent\niptables / WFP"]
-  end
-
-  subgraph NET["Agentless (network-based)"]
-    FMC["Firewall Management Center (FMC)"]
-    FW["Secure Firewall (east-west)\nL3/L4 dynamic-object rules"]
-    WL["Agentless workloads\n(legacy OS, appliances)"]
-    FMC --> FW --> WL
-  end
-
-  CSW -- "policy → host agent" --> HOST
-  CSW -- "policy → FMC (dynamic objects)" --> NET
-  FW -- "NSEL flow telemetry" --> CSW
-  A1 -- "flow + process/CVE telemetry" --> CSW
-```
+![Figure 2: Host-based and network-based approach with Secure Workload](./assets/figures/overview/figure-02.png)
+*Figure 2 — Host-based and network-based approach with Secure Workload (© Cisco Systems, Inc.)*
 
 | | Host-based (agent) | Network-based (Secure Firewall) |
 |---|---|---|
